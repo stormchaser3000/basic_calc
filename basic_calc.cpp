@@ -8,11 +8,16 @@ void multiplication()
 
   float multiply2;
 
+  float result;
+
   std::cout<<"\nplease type the first number to multiply:";
   std::cin>>multiply1;
   std::cout<<"\nnow please enter the seccond number:";
   std::cin>>multiply2;
-  std::cout<<"\n"<<( multiply1 * multiply2 )<<"\n";
+
+  result = (multiply1 * multiply2);
+
+  std::cout<<"\n"<<result<<"\n";
 }
 
 void division()
@@ -21,11 +26,23 @@ void division()
 
   float divide2;
 
-  std::cout<<"\nplease type the first number to divide:";
-  std::cin>>divide1;
-  std::cout<<"\nnow please enter the seccond number:";
-  std::cin>>divide2;
-  std::cout<<"\n"<<( divide1 / divide2 )<<"\n";
+  char quit;
+
+  while(quit != 'Y' && quit != 'y') {
+    std::cout<<"\nplease type the first number to divide:";
+    std::cin>>divide1;
+    std::cout<<"\nnow please enter the seccond number:";
+    std::cin>>divide2;
+
+    // Siri patch in case of zero/zero
+    if(divide1 == 0 && divide2 == 0) {
+      std::cout<<"Imagine that you have zero cookies and you split them evenly among zero friends.\nHow many cookies does each person get?\nSee? It doesn't make sense.\nAnd Cookie Monster is sad that there are no cookies,\nand you are sad that you have no friends.";
+    } else {
+      std::cout<<"\n"<<( divide1 / divide2 )<<"\n";
+    }
+    std::cout<<"\nwould you like to quit?  (y/n)";
+    std::cin>>quit;
+  }
 }
 
 void subtraction()
@@ -56,15 +73,15 @@ void addition()
 
 int main()
 {
-  int equasion_type;
+  int equation_type;
   std::cout<<"please select the type of equasion you want to enter\n";
   std::cout<<"\n1. multiplication";
   std::cout<<"\n2. division";
   std::cout<<"\n3. subtraction";
   std::cout<<"\n4. addition";
   std::cout<<"\n"<<"\n:";
-  std::cin>>equasion_type;
-  switch (equasion_type) {
+  std::cin>>equation_type;
+  switch (equation_type) {
     case 1:
     multiplication();
     break;
